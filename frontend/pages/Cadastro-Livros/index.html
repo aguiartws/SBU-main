@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="cadastro_livros.css">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <header id="Header">
+        <p id="textHeader">o o o</p>
+    </header>
+
+    <div class="cabecalho">
+        <div id="LogoPuc">
+            <img  src="../../assets/Imagens/Logo_Puc.png" class="logo" alt="Logo da PUC Campinas" width="215vw" height="90vh">
+        </div>
+
+        <div id="texto">
+            <h1>Área para cadastro de livros</h1>
+            <p>Preencha os dados abaixo para adicionar um novo título ao sistema!</p>
+        </div>
+    </div>
+    
+    <main>
+        
+        <form class="formLivro" action="#" method="post">
+            <div id="leftRow">
+                <div class="inputGroup">
+                    <label class="label" for="codigo">Código:</label>
+                    <input class="input" type="text" id="codigo" placeholder="Código do livro">
+                </div>
+
+                <div class="inputGroup">
+                    <label class="label" for="titulo">Título:</label>
+                    <input class="input" type="text" id="titulo" placeholder="Título do livro">
+                </div>
+            </div>
+            <div id="rightRow">
+                <div class="inputGroup">
+                    <label class="label" for="editora">Editora:</label>
+                    <input class="input" type="text" id="editora" placeholder="Nome da editora">
+                </div>
+                <div class="inputGroup">
+                    <label class="label" for="ano">Ano:</label>
+                    <input class="input" type="text" id="ano" placeholder="Ano de lançamento">
+                </div>
+            </div>
+        </form>
+        <div class="botao_enter">
+            <button class="botao" id="botao" type="submit">Cadastrar</button>
+        </div>
+
+    </main>
+
+    <div id="toast-sucesso"></div>
+    <div id="toast-erro"></div>
+
+    <script>
+        const botao = document.getElementById('botao');
+        const toastSucesso = document.getElementById('toast-sucesso');
+        const toastErro = document.getElementById('toast-erro');
+
+        botao.addEventListener('click', function(event) {
+            event.preventDefault(); // evita envio do form nao sei se terá q mudar na hr do bd
+
+            const codigo = document.getElementById('codigo').value.trim();
+            const titulo = document.getElementById('titulo').value.trim();
+            const editora = document.getElementById('editora').value.trim();
+            const ano = document.getElementById('ano').value.trim();
+
+            if (!codigo || !titulo || !editora || !ano) {
+                toastErro.textContent = 'Por favor, preencha todos os campos!';
+                toastErro.classList.add('show');
+                setTimeout(() => toastErro.classList.remove('show'), 3000);
+                return;
+            }
+
+            document.getElementById('codigo').value = '';
+            document.getElementById('titulo').value = '';
+            document.getElementById('editora').value = '';
+            document.getElementById('ano').value = '';
+
+            toastSucesso.textContent = 'As informações foram salvas com sucesso!';
+            toastSucesso.classList.add('show');
+            setTimeout(() => toastSucesso.classList.remove('show'), 3000);
+        });
+    </script>
+
+</body>
+
+</html>
