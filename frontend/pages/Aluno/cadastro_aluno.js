@@ -42,3 +42,5 @@ document.addEventListener("DOMContentLoaded", () => {
     showToast("success", "Cadastro realizado com sucesso!");
   });
 });
+
+// colocar a rota
